@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pilots</title>
+</head>
+<body>
+    <h1>Pilot List</h1>
+    <div>
+        {% for pilot in pilots %}
+            <div>
+                <h2>{{ pilot.first_name }} {{ pilot.last_name }}</h2>
+                <p>{{ pilot.team.name }}</p>
+                <p>{{ pilot.country }}</p>
+                <p>{{ pilot.podiums }}</p>
+                <br>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
