@@ -1,7 +1,16 @@
 from django.db import models
+from datetime import datetime
 
 
-class Team(models.Model):
+class MyModel(models.Model):
+    class Meta:
+        abstract = True
+
+    created_at = models.DateTimeField(default=datetime.now, blank=True)
+    updated_at = models.DateTimeField(default=datetime.now, blank=True)
+
+
+class Team(MyModel):
     name = models.CharField(max_length=30)
     power_unit = models.CharField(max_length=30)
     world_championships = models.PositiveIntegerField()
@@ -11,7 +20,7 @@ class Team(models.Model):
         return self.name
 
 
-class Pilot(models.Model):
+class Pilot(MyModel):
     first_name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
