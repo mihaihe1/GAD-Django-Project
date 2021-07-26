@@ -5,6 +5,7 @@ import requests
 import urllib.request
 from pathlib import Path
 from bs4 import BeautifulSoup
+import math
 
 
 def standings_webscraping():
@@ -62,3 +63,28 @@ def news_webscraping():
             news.append(news_text)
 
     return news
+
+
+def weather_webscraping(city, day):
+    if day > 9:
+        return 'No data available'
+
+    url = f'https://www.weatherbug.com/weather-forecast/10-day-weather/{city}'
+
+    page = requests.get(url)
+    soup = BeautifulSoup(page.content, features='html.parser')
+
+    li_list = soup.find_all('li', {'class': 'day-card-list__item'})
+    race_day = li_list[day]
+
+    div = race_day.find('div', {'class': 'day-card__desktop'})
+    day_temp_div = div.find('div', {'class': 'day-card__body'})
+
+    temperature = day_temp_div.find('div', {'class': 'temp'}).text.strip()
+    description = day_temp_div.find('div', {'class': 'description'}).text.strip()
+
+    temperature_to_int = int(temperature[:-1])  # elimin ultimul caracter deoarece temperatura era de forma 92°
+    temperature_to_celsius = math.floor((temperature_to_int - 32) * 5/9)  # fahrenheit -> celsius
+
+    return f'{temperature_to_celsius}° - {description}'
+
