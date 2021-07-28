@@ -11,13 +11,32 @@
       {% endfor %}
    {% endif %}
 
+    <form method="get" action="{% url 'drivers:view_all' %}">
+      {{ form.as_p }}
+      <input type="submit" value="Filter drivers" />
+    </form>
+    <p>Current page: {{ page_obj  }}<p>
+    <p>Current page number: {{ page_obj.number }}<p>
+    <p>Total pages: {{ page_obj.paginator.num_pages }}<p>
+    {% if page_obj.has_previous %}
+      <p>
+         <a href="{% url 'drivers:view_all' %}?page={{ page_obj.previous_page_number }}">Previous page</a>
+      </p>
+    {% endif %}
+    {% if page_obj.has_next %}
+      <p>
+         <a href="{% url 'drivers:view_all' %}?page={{ page_obj.next_page_number }}">Next page</a>
+      </p>
+    {% endif %}
+
     <ul>
-        {% for driver in drivers %}
+        {% for driver in page_obj %}
             <li>
                 <h2>{{ driver.first_name }} {{ driver.last_name }}</h2>
                 <p>Team: {{ driver.team.name }}</p>
                 <p>Country: {{ driver.country }}</p>
                 <p>Podiums: {{ driver.podiums }}</p>
+                <a href="/drivers/{{ driver.id }}">View more</a>
                 <br>
             </li>
         {% endfor %}

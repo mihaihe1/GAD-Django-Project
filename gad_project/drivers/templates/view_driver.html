@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {{ driver.first_name }}
+    <form method="POST">{% csrf_token %}
+        <p><input class="btn btn-danger" type='submit' value='Delete' />  <a href="{% url 'drivers:view_all' %}"></a></p>
+    </form>
+
+{% endblock %}

@@ -36,11 +36,7 @@ def standings_webscraping():
             if len(td.get('class', [])) and td.get('class', [])[0] not in bad_classes:
                 columns_list.append(td.text)
 
-        dict = {
-            col: data
-            for col, data in zip(columns, columns_list)
-        }
-        standings.append(dict)
+        standings.append(columns_list)
 
     return standings
 
