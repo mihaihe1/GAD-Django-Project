@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Races</title>
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for race in races %}
+            <li>
+                <h2>{{ race.name }}</h2>
+                <p>Circuit: {{ race.circuit.name }}</p>
+                <p>First Place: {{ race.first_place.first_name }} {{ race.first_place.last_name }}</p>
+                <p>Second Place: {{ race.second_place.first_name }} {{ race.second_place.last_name }}</p>
+                <p>Third Place: {{ race.third_place.first_name }} {{ race.third_place.last_name }}</p>
+                <p>Date: {{ race.date }}</p>
+                <p>Sold out: {{ race.sold_out }}</p>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Drivers</title>
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+      {% for message in messages %}
+         <p class="bg-{{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+   {% endif %}
+
+    <ul>
+        {% for driver in drivers %}
+            <li>
+                <h2>{{ driver.first_name }} {{ driver.last_name }}</h2>
+                <p>Team: {{ driver.team.name }}</p>
+                <p>Country: {{ driver.country }}</p>
+                <p>Podiums: {{ driver.podiums }}</p>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

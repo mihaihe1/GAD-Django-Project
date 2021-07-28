@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Circuits</title>
+{% endblock %}
+
+{% block content %}
+    <ul>
+        {% for circuit in circuits %}
+            <li>
+                <h2>{{ circuit.name }}</h2>
+                <p>Location: {{ circuit.location }}</p>
+                <p>Capacity: {{ circuit.capacity }}</p>
+                <p>Grand Prix held: {{ circuit.gps_held }}</p>
+                <p>Length: {{ circuit.length }} km</p>
+                <p>Lap Record: {{ circuit.lap_record }}</p>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
