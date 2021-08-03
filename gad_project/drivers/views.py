@@ -57,9 +57,13 @@ def view_driver(request, driver_id):
 
 
 def update_driver(request, driver_id):
-    driver = get_object_or_404(Driver, id=driver_id)
-    form = AddDriverForm(request.POST or None, instance=driver)
+    obj = get_object_or_404(Driver, id=driver_id)
+    form = AddDriverForm(request.POST or None, instance=obj)
     if form.is_valid():
         form.save()
-
-    return render(request, 'add_drivers.html', {'form': form})
+        messages.success(request, f'Driver was successfully updated!')
+        return redirect(reverse('drivers:view_all'))
+    context = {
+        'form': form
+    }
+    return render(request, "update_driver.html", context)

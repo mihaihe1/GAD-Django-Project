@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+DATETIME_FORMAT = 'd-m-Y'
+USE_L10N = False
+USE_TZ = False
 
 # Application definition
 
@@ -116,9 +119,9 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
-
-USE_TZ = True
+# USE_L10N = True
+#
+# USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

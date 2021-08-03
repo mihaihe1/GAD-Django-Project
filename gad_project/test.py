@@ -2,6 +2,6 @@ from webscraping import standings_webscraping, news_webscraping, weather_webscra
 
 st = standings_webscraping()
 ne = news_webscraping()
-we = weather_webscraping('London', 3)
-print(st)
+we = weather_webscraping('Monza, Italy', 3)
+print(we)
 

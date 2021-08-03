@@ -62,9 +62,6 @@ def news_webscraping():
 
 
 def weather_webscraping(city, day):
-    if day > 9:
-        return 'No data available'
-
     url = f'https://www.weatherbug.com/weather-forecast/10-day-weather/{city}'
 
     page = requests.get(url)

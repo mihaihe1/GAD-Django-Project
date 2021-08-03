@@ -1,9 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    {{ driver.first_name }}
+<h1>{{ driver.first_name }} {{ driver.last_name }}</h1>
+<h2> Team - {{ driver.team }}</h2>
+<h3> Country - {{ driver.country }}</h3>
+<p> Podiums - {{ driver.podiums }}</p>
+<p> Highest race finish - {{ driver.highest_race_finish }}</p>
+<p> Age - {{ driver.age }}</p>
+
     <form method="POST">{% csrf_token %}
         <p><input class="btn btn-danger" type='submit' value='Delete' />  <a href="{% url 'drivers:view_all' %}"></a></p>
     </form>
+
+    <a class="btn btn-warning" href="{% url 'drivers:update' driver.id %}" >Update</a>
+
 
 {% endblock %}

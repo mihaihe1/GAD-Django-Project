@@ -11,6 +11,7 @@ class Race(models.Model):
     third_place = models.ForeignKey(Driver, on_delete=models.CASCADE, related_name='third_place')
     date = models.DateTimeField()
     sold_out = models.BooleanField()
+    weather = models.CharField(max_length=50, default="Data not available")
 
     def __str__(self):
         return self.name
