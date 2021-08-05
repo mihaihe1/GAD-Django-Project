@@ -1,5 +1,6 @@
 from django import forms
 from .models import Race
+from datetime import date
 
 
 class AddRaceForm(forms.ModelForm):
@@ -42,7 +43,7 @@ class FilterRaces(forms.Form):
         ending_date = self.cleaned_data.get('ending_date')
 
         if starting_date:
-            races = races.filter(date__gte=starting_date)
+            races = races.filter(date__gte=date(starting_date.year, starting_date.month, starting_date.day))
 
         if ending_date:
             races = races.filter(date__lte=ending_date)

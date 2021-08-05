@@ -11,7 +11,7 @@ def show_all_drivers(request):
     form = FilterDrivers(request.GET)
     if form.is_valid():
         drivers = form.get_drivers()
-        paginator = Paginator(drivers, 3)
+        paginator = Paginator(drivers, 5)
 
         page = request.GET.get('page', 1)
         page_obj = paginator.get_page(page)

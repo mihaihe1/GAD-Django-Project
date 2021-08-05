@@ -13,11 +13,14 @@ def show_all_races(request):
     form = FilterRaces(request.GET)
     if form.is_valid():
         races = form.get_races()
-        paginator = Paginator(races, 3)
+    else:
+        races = Race.objects.all()
 
-        page = request.GET.get('page', 1)
-        page_obj = paginator.get_page(page)
-        return render(request, "races.html", {'page_obj': page_obj, 'form': form})
+    paginator = Paginator(races, 3)
+
+    page = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page)
+    return render(request, "races.html", {'page_obj': page_obj, 'form': form})
 
 
 def add_race(request):
@@ -34,7 +37,7 @@ def add_race(request):
         if form.is_valid():
             task = form.save()
             delta = task.date - datetime.now()
-            if delta.days < 10:
+            if 0 <= delta.days < 10:
                 task.weather = weather_webscraping(task.circuit.location, delta.days)
             task.save()
 

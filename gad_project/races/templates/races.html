@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block content %}
+    {% if messages %}
+      {% for message in messages %}
+         <p class="bg-{{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+   {% endif %}
     <p>
         <a href="{% url 'races:add' %}">Add race</a>
     </p>

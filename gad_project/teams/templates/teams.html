@@ -18,8 +18,6 @@
         {% for team in teams %}
             <li>
                 <h2>{{ team.name }}</h2>
-                <p>Power Unit: {{ team.power_unit }}</p>
-                <p>World Championships: {{ team.world_championships }}</p>
                 <p>Country: {{ team.country }}</p>
                 <a href="{% url 'teams:view' team.id %}">View more</a>
                 <br>
