@@ -54,9 +54,9 @@ def news_webscraping():
         div = item.find('div', {'class': 'f1-cc--caption'})
         category = div.find('p', {'class': 'misc--tag'}).text.strip()
 
-        if category == 'News':
+        if category != 'Podcast' and category != 'Video':
             news_text = div.find('p', {'class': 'no-margin'}).text
-            news.append(news_text)
+            news.append((category, news_text))
 
     return news
 

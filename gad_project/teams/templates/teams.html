@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Teams</title>
+{% endblock %}
+
+{% block content %}
+    {% if messages %}
+      {% for message in messages %}
+         <p class="bg-{{ message.tags }}">{{ message }}</p>
+      {% endfor %}
+   {% endif %}
+
+    <p>
+        <a href="{% url 'teams:add' %}">Add team</a>
+    </p>
+    <ul>
+        {% for team in teams %}
+            <li>
+                <h2>{{ team.name }}</h2>
+                <p>Power Unit: {{ team.power_unit }}</p>
+                <p>World Championships: {{ team.world_championships }}</p>
+                <p>Country: {{ team.country }}</p>
+                <a href="{% url 'teams:view' team.id %}">View more</a>
+                <br>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

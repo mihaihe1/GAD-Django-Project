@@ -5,8 +5,15 @@
 <h2> Team - {{ driver.team }}</h2>
 <h3> Country - {{ driver.country }}</h3>
 <p> Podiums - {{ driver.podiums }}</p>
-<p> Highest race finish - {{ driver.highest_race_finish }}</p>
+<p> Highest race finish -
+    {% if driver.highest_race_finish > 3 %}
+        N/A
+    {% else %}
+       {{ driver.highest_race_finish }}
+    {% endif %}
+</p>
 <p> Age - {{ driver.age }}</p>
+<p> Points - {{ driver.points }}</p>
 
     <form method="POST">{% csrf_token %}
         <p><input class="btn btn-danger" type='submit' value='Delete' />  <a href="{% url 'drivers:view_all' %}"></a></p>

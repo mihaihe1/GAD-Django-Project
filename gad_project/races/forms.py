@@ -23,3 +23,28 @@ class AddRaceForm(forms.ModelForm):
                 'Driver already picked'])
 
         return self.cleaned_data
+
+
+class FilterRaces(forms.Form):
+    starting_date = forms.DateTimeField(label='Starting Date', required=False)
+    ending_date = forms.DateTimeField(label='Ending Date', required=False)
+    sold_out = forms.BooleanField(label='Sold Out', required=False)
+
+    def get_races(self):
+        races = Race.objects.all()
+
+        sold_out = self.cleaned_data.get('sold_out')
+
+        if sold_out:
+            races = races.filter(sold_out=True)
+
+        starting_date = self.cleaned_data.get('starting_date')
+        ending_date = self.cleaned_data.get('ending_date')
+
+        if starting_date:
+            races = races.filter(date__gte=starting_date)
+
+        if ending_date:
+            races = races.filter(date__lte=ending_date)
+
+        return races

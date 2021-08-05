@@ -5,7 +5,7 @@ from .models import Driver
 class AddDriverForm(forms.ModelForm):
     class Meta:
         model = Driver
-        exclude = []
+        exclude = ['points', 'highest_race_finish']
 
 
 class FilterDrivers(forms.Form):

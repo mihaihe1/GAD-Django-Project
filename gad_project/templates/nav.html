@@ -11,16 +11,22 @@
         <a class="nav-link" href="{% url 'drivers:view_all' %}">Drivers</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Teams(TO DO)</a>
+        <a class="nav-link" href="{% url 'teams:view_all' %}">Teams</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="{% url 'circuits:view_all' %}">Circuits</a>
       </li>
-            <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link" href="{% url 'races:view_all' %}">Races</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="{% url 'custom_standings' %}">Custom Standings</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" href="{% url 'real_standings' %}">Real Standings</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'news' %}">News</a>
       </li>
     </ul>
   </div>

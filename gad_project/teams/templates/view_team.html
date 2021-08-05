@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ team.name }}</h1>
+<h2> Power Unit - {{ team.power_unit }}</h2>
+<h3> World Championships - {{ team.world_championships }}</h3>
+<p> Country - {{ team.country }}</p>
+
+    <form method="POST">{% csrf_token %}
+        <p><input class="btn btn-danger" type='submit' value='Delete' />  <a href="{% url 'teams:view_all' %}"></a></p>
+    </form>
+
+    <a class="btn btn-warning" href="{% url 'teams:update' team.id %}" >Update</a>
+
+
+{% endblock %}

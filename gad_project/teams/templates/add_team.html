@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Add a team</title>
+{% endblock %}
+
+{% block content %}
+    <h2>Add team form</h2>
+    <form method="post" action="{% url 'teams:add' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Submit" />
+    </form>
+{% endblock %}

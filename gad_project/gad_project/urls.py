@@ -15,13 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import show_homepage, real_standings
+from .views import show_homepage, real_standings, custom_standings, news
 
 urlpatterns = [
     path('', show_homepage, name="home"),
-    path('real_standings', real_standings, name="real_standings"),
+    path('real_standings/', real_standings, name="real_standings"),
+    path('custom_standings/', custom_standings, name="custom_standings"),
+    path('news/', news, name="news"),
     path('admin/', admin.site.urls),
     path('drivers/', include('drivers.urls')),
     path('circuits/', include('circuits.urls')),
-    path('races/', include('races.urls'))
+    path('races/', include('races.urls')),
+    path('teams/', include('teams.urls'))
 ]

@@ -5,8 +5,28 @@
 {% endblock %}
 
 {% block content %}
+    <p>
+        <a href="{% url 'races:add' %}">Add race</a>
+    </p>
+    <form method="get" action="{% url 'races:view_all' %}">
+      {{ form.as_p }}
+      <input type="submit" value="Filter races" />
+    </form>
+    <p>Current page: {{ page_obj  }}<p>
+    <p>Current page number: {{ page_obj.number }}<p>
+    <p>Total pages: {{ page_obj.paginator.num_pages }}<p>
+    {% if page_obj.has_previous %}
+      <p>
+         <a href="{% url 'races:view_all' %}?page={{ page_obj.previous_page_number }}">Previous page</a>
+      </p>
+    {% endif %}
+    {% if page_obj.has_next %}
+      <p>
+         <a href="{% url 'races:view_all' %}?page={{ page_obj.next_page_number }}">Next page</a>
+      </p>
+    {% endif %}
     <ul>
-        {% for race in races %}
+        {% for race in page_obj %}
             <li>
                 <h2>{{ race.name }}</h2>
                 <p>Circuit: {{ race.circuit.name }}</p>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="row">
+    {% for category, article in news %}
+        <div class="col-sm-6">
+<div class="card border-dark mb-3 ml-5 mt-2" style="max-width: 25rem;">
+  <div class="card-header">{{ category }}</div>
+  <div class="card-body text-dark">
+    <h5 class="card-title">{{ article }}</h5>
+  </div>
+</div>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}

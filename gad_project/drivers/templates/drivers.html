@@ -28,7 +28,9 @@
          <a href="{% url 'drivers:view_all' %}?page={{ page_obj.next_page_number }}">Next page</a>
       </p>
     {% endif %}
-
+    <p>
+        <a href="{% url 'drivers:add' %}">Add driver</a>
+    </p>
     <ul>
         {% for driver in page_obj %}
             <li>
@@ -36,7 +38,7 @@
                 <p>Team: {{ driver.team.name }}</p>
                 <p>Country: {{ driver.country }}</p>
                 <p>Podiums: {{ driver.podiums }}</p>
-                <a href="/drivers/{{ driver.id }}">View more</a>
+                <a href="{% url 'drivers:view' driver.id %}">View more</a>
                 <br>
             </li>
         {% endfor %}
